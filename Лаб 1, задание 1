@@ -9,23 +9,23 @@ public class Main {
         System.out.print("Введите число y: ");
         int y = scanner.nextInt();
 
-        int bigger;
-        int smaller;
+        int b;
+        int s;
 
         if (x > y) {
-            bigger = x;
-            smaller = y;
+            b = x;
+            s = y;
         } else {
-            bigger = y;
-            smaller = x;
+            b = y;
+            s = x;
         }
 
-        int resultBigger = bigger * 2;
-        double resultSmaller = smaller / 3.0;
+        int resultBigger = b * 2;
+        double resultSmaller = s / 3.0;
 
-        System.out.println("Большее число: " + bigger);
+        System.out.println("Большее число: " + b);
         System.out.println("Большее число * 2 = " + resultBigger);
-        System.out.println("Меньшее число: " + smaller);
+        System.out.println("Меньшее число: " + s);
         System.out.println("Меньшее число / 3 = " + resultSmaller);
         scanner.close();
     }
