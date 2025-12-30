@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Ввод данных
+        System.out.print("Введите число x: ");
+        int x = scanner.nextInt();
+
+        System.out.print("Введите число y: ");
+        int y = scanner.nextInt();
+
+        int bigger;
+        int smaller;
+
+        if (x > y) {
+            bigger = x;
+            smaller = y;
+        } else {
+            bigger = y;
+            smaller = x;
+        }
+
+        int resultBigger = bigger * 2;
+        double resultSmaller = smaller / 3.0;
+
+        System.out.println("Большее число: " + bigger);
+        System.out.println("Большее число * 2 = " + resultBigger);
+        System.out.println("Меньшее число: " + smaller);
+        System.out.println("Меньшее число / 3 = " + resultSmaller);
+        scanner.close();
+    }
+}
