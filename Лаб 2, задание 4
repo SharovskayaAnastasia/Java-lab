@@ -1,0 +1,54 @@
+import java.util.Random;
+import java.util.Scanner;
+
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+
+        System.out.print("Введите размер матрицы n: ");
+        int n = scanner.nextInt();
+
+
+        int[][] A = new int[n][n];
+        int minVal = -50;
+        int maxVal = 50;
+
+        System.out.println("Сгенерированная матрица A:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                A[i][j] = random.nextInt(maxVal - minVal + 1) + minVal;
+                System.out.printf("%4d", A[i][j]);
+            }
+            System.out.println();
+        }
+
+
+        int sum = 0;
+        int count = 0;
+
+        System.out.println("\nЭлементы побочной диагонали:");
+        for (int i = 0; i < n; i++) {
+            int j = n - 1 - i;
+            int value = A[i][j];
+            System.out.println("A[" + i + "][" + j + "] = " + value);
+
+            if (value > 0) {
+                sum += value;
+                count++;
+            }
+        }
+
+        if (count > 0) {
+            double average = (double) sum / count;
+            System.out.printf("\nСреднее арифметическое положительных элементов побочной диагонали: %.2f%n", average);
+        } else {
+            System.out.println("\nНа побочной диагонали нет положительных элементов.");
+        }
+
+        scanner.close();
+    }
+}
