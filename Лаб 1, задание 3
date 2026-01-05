@@ -1,1 +1,38 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Введите значение x: ");
+        double x = scanner.nextDouble();
+
+        double Y = calculateY(x);
+        double F = calculateF(x);
+
+        System.out.println("Значение Y = " + Y);
+        System.out.println("Значение F = " + F);
+    }
+
+    public static double calculateY(double x) {
+        if (x <= -3) {
+            return Math.pow(x, 3) + 1;
+        } else if (x > -3 && x <= 4) {
+            return x * (1 + Math.pow(2, x));
+        } else { // x > 4
+            return Math.tan(x);
+        }
+    }
+
+    public static double calculateF(double x) {
+        if (x <= -3) {
+            return Math.exp(Math.sin(x));
+        } else if (x > -3 && x <= 4) {
+            return Math.pow(x, 4);
+        } else { // x > 4
+            return Math.sqrt(Math.tan(x));
+        }
+    }
+}
 
