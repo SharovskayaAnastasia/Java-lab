@@ -1,0 +1,15 @@
+public class Director extends Employee {
+
+    public Director(String name, double salary) {
+        super(name, salary);
+    }
+
+    public void makeDecision() {
+        System.out.println("Директор " + getName() + " принимает стратегическое решение.");
+    }
+
+    @Override
+    public String toString() {
+        return "Director{" + super.toString() + "}";
+    }
+}
