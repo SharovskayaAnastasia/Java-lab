@@ -1,0 +1,142 @@
+public class Point {
+    protected int x;
+    protected int y;
+
+    public Point() {
+        this.x = 0;
+        this.y = 0;
+    }
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void setLocation(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+
+    public int getX() {
+        return x;
+    }
+
+
+    public int getY() {
+        return y;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + "," + y + ")";
+    }
+
+    public int distanceFromOrigin() {
+        return (int) Math.sqrt(x * x + y * y);
+    }
+
+   
+    public boolean isInRectangle(Point top_left, Point bottom_right) {
+        return x >= top_left.x && x <= bottom_right.x && 
+               y >= top_left.y && y <= bottom_right.y;
+    }
+
+
+    public boolean isInCircle(Point center, int radius) {
+        int dx = x - center.x;
+        int dy = y - center.y;
+        return dx * dx + dy * dy <= radius * radius;
+    }
+}
+
+
+public class Point3D extends Point {
+    protected int z;
+
+
+    public Point3D() {
+        super();
+        this.z = 0;
+    }
+
+
+    public Point3D(int x, int y, int z) {
+        super(x, y);
+        this.z = z;
+    }
+
+
+    @Override
+    public void setLocation(int x, int y) {
+        super.setLocation(x, y);
+        this.z = 0;
+    }
+
+
+    public void setLocation(int x, int y, int z) {
+        super.setLocation(x, y);
+        this.z = z;
+    }
+
+
+    public int getZ() {
+        return z;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + "," + y + "," + z + ")";
+    }
+
+
+    @Override
+    public int distanceFromOrigin() {
+        return (int) Math.sqrt(x * x + y * y + z * z);
+    }
+
+
+    public boolean isInBox(Point3D corner1, Point3D corner2) {
+        int minX = Math.min(corner1.x, corner2.x);
+        int maxX = Math.max(corner1.x, corner2.x);
+        int minY = Math.min(corner1.y, corner2.y);
+        int maxY = Math.max(corner1.y, corner2.y);
+        int minZ = Math.min(corner1.z, corner2.z);
+        int maxZ = Math.max(corner1.z, corner2.z);
+
+        return x >= minX && x <= maxX && 
+               y >= minY && y <= maxY && 
+               z >= minZ && z <= maxZ;
+    }
+
+
+    public boolean isInSphere(Point3D center, int radius) {
+        int dx = x - center.x;
+        int dy = y - center.y;
+        int dz = z - center.z;
+        return dx * dx + dy * dy + dz * dz <= radius * radius;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        Point p1 = new Point(3, 4);
+        System.out.println("Point p1: " + p1);
+        System.out.println("Distance from origin: " + p1.distanceFromOrigin());
+
+
+        Point3D p3d = new Point3D(1, 2, 2);
+        System.out.println("Point3D: " + p3d);
+        System.out.println("Distance from origin (3D): " + p3d.distanceFromOrigin());
+
+
+        Point3D center = new Point3D(0, 0, 0);
+        System.out.println("In sphere (radius 5): " + p3d.isInSphere(center, 5));
+
+        Point3D corner1 = new Point3D(0, 0, 0);
+        Point3D corner2 = new Point3D(5, 5, 5);
+        System.out.println("In box: " + p3d.isInBox(corner1, corner2));
+    }
+}
