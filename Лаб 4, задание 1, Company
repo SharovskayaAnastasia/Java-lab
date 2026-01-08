@@ -1,0 +1,82 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Company {
+    private List<Employee> employees;
+
+    public Company() {
+        this.employees = new ArrayList<>();
+    }
+
+    public void addEmployee(Employee employee) {
+        if (employee != null) {
+            employees.add(employee);
+            System.out.println("Сотрудник " + employee.getName() + " добавлен в компанию.");
+        }
+    }
+
+    public Employee popEmployee(int index) {
+        if (index >= 0 && index < employees.size()) {
+            Employee removed = employees.remove(index);
+            System.out.println("Сотрудник " + removed.getName() + " удалён из компании.");
+            return removed;
+        } else {
+            System.out.println("Ошибка: индекс вне диапазона.");
+            return null;
+        }
+    }
+
+    public int countManagers() {
+        int count = 0;
+        for (Employee emp : employees) {
+            if (emp instanceof Manager) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int countInterns() {
+        int count = 0;
+        for (Employee emp : employees) {
+            if (emp instanceof Intern) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int countDirectors() {
+        int count = 0;
+        for (Employee emp : employees) {
+            if (emp instanceof Director) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public void increaseManagersSalary(double percent) {
+        for (Employee emp : employees) {
+            if (emp instanceof Manager) {
+                ((Manager) emp).increaseSalary(percent);
+            }
+        }
+    }
+
+    public void executeDirectorsDecisions() {
+        for (Employee emp : employees) {
+            if (emp instanceof Director) {
+                ((Director) emp).makeDecision();
+            }
+        }
+    }
+
+    public void displayAllEmployees() {
+        System.out.println("\n--- Список сотрудников компании ---");
+        for (Employee emp : employees) {
+            System.out.println(emp.toString());
+        }
+        System.out.println("----------------------------------\n");
+    }
+}
