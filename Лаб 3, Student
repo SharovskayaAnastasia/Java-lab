@@ -1,0 +1,58 @@
+public class Students {
+    private String idStudenta;   // номер зачетной книжки
+    private String fam;          // фамилия
+    private String name;         // имя
+    private String groupa;       // группа
+    private String department;   // кафедра
+    private String discipline;   // дисциплина
+    private int mark;            // оценка
+    private String nameTeacher;  // фамилия преподавателя
+
+    public Students(String idStudenta, String fam, String name,
+                    String groupa, String department,
+                    String discipline, int mark,
+                    String nameTeacher) {
+        this.idStudenta = idStudenta;
+        this.fam = fam;
+        this.name = name;
+        this.groupa = groupa;
+        this.department = department;
+        this.discipline = discipline;
+        this.mark = mark;
+        this.nameTeacher = nameTeacher;
+    }
+
+    public String getIdStudenta() { return idStudenta; }
+    public void setIdStudenta(String idStudenta) { this.idStudenta = idStudenta; }
+
+    public String getFam() { return fam; }
+    public void setFam(String fam) { this.fam = fam; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public String getGroupa() { return groupa; }
+    public void setGroupa(String groupa) { this.groupa = groupa; }
+
+    public String getDepartment() { return department; }
+    public void setDepartment(String department) { this.department = department; }
+
+    public String getDiscipline() { return discipline; }
+    public void setDiscipline(String discipline) { this.discipline = discipline; }
+
+    public int getMark() { return mark; }
+    public void setMark(int mark) { this.mark = mark; }
+
+    public String getNameTeacher() { return nameTeacher; }
+    public void setNameTeacher(String nameTeacher) { this.nameTeacher = nameTeacher; }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "Зачётка: %s%nСтудент: %s %s%nГруппа: %s%nКафедра: %s%n" +
+            "Дисциплина: %s%nОценка: %d%nПреподаватель: %s",
+            idStudenta, fam, name, groupa, department,
+            discipline, mark, nameTeacher
+        );
+    }
+}
