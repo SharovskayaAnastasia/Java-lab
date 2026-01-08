@@ -1,0 +1,25 @@
+public class Main {
+    public static void main(String[] args) {
+
+        Company company = new Company();
+
+        company.addEmployee(new Manager("Алексей", 100000));
+        company.addEmployee(new Intern("Мария", 30000));
+        company.addEmployee(new Director("Сергей", 200000));
+        company.addEmployee(new Manager("Ольга", 90000));
+
+        company.displayAllEmployees();
+
+        System.out.println("Менеджеров: " + company.countManagers());
+        System.out.println("Стажёров: " + company.countInterns());
+        System.out.println("Директоров: " + company.countDirectors());
+
+        company.increaseManagersSalary(10);
+
+        company.executeDirectorsDecisions();
+
+        company.popEmployee(0);
+
+        company.displayAllEmployees();
+    }
+}
