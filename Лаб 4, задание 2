@@ -1,0 +1,27 @@
+public class ComplexNumber {
+    double real;
+    double imaginary;
+
+    public ComplexNumber(double real, double imaginary) {
+        this.real = real;
+        this.imaginary = imaginary;
+    }
+
+
+    public ComplexNumber conjugate() {
+        return new ComplexNumber(real, -imaginary);
+    }
+
+    @Override
+    public String toString() {
+        return real + " + " + imaginary + "i";
+    }
+
+    public static void main(String[] args) {
+        ComplexNumber z = new ComplexNumber(3, 4);
+        ComplexNumber zConj = z.conjugate(); 
+
+        System.out.println("z = " + z);
+        System.out.println("conj(z) = " + zConj);
+    }
+}
