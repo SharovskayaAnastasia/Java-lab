@@ -1,0 +1,78 @@
+import java.util.Arrays;
+
+public class GroupStudents {
+    private int id; 
+    private Students[] students;
+
+
+    public GroupStudents() {
+        this.id = 0;
+        this.students = new Students[0];
+    }
+
+
+    public GroupStudents(int id, Students[] students) {
+        this.id = id;
+        this.students = students;
+    }
+
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+
+    public Students[] getStudents() { return students; }
+    public void setStudents(Students[] students) { this.students = students; }
+
+
+    public Students getStudent(int index) {
+        if (index < 0 || index >= students.length) return null;
+        return students[index];
+    }
+
+
+    public void setStudent(int index, Students student) {
+        if (index < 0 || index >= students.length) return;
+        students[index] = student;
+    }
+
+
+    public void addStudent(Students s) {
+        Students[] newArr = Arrays.copyOf(students, students.length + 1);
+        newArr[newArr.length - 1] = s;
+        students = newArr;
+    }
+
+
+    public void removeByIdStudenta(String idStudenta) {
+        int count = 0;
+        for (Students s : students) {
+            if (!s.getIdStudenta().equals(idStudenta)) {
+                count++;
+            }
+        }
+        Students[] newArr = new Students[count];
+        int j = 0;
+        for (Students s : students) {
+            if (!s.getIdStudenta().equals(idStudenta)) {
+                newArr[j++] = s;
+            }
+        }
+        students = newArr;
+    }
+
+
+    public void sortByFam() {
+        Arrays.sort(students, (a, b) -> a.getFam().compareToIgnoreCase(b.getFam()));
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Группа ID = " + id + "\n");
+        for (Students s : students) {
+            sb.append("---------------------\n");
+            sb.append(s.toString()).append("\n");
+        }
+        return sb.toString();
+    }
+}
